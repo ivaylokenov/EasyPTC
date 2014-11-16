@@ -16,7 +16,8 @@ namespace EasyPTC.Web
         {
             ViewEnginesConfiguration.RegisterViewEngines(ViewEngines.Engines);
             AutoMapperConfig.Execute();
-
+            ModelBinderConfig.RegisterModelBinders(ModelBinderProviders.BinderProviders);
+    
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -1,3 +1,6 @@
-﻿<p>
+﻿@using EasyPTC.Web.Controllers;
+<p>
     About us!
 </p>
+
+@(Html.ActionLink<HomeController>(h => h.Index(), "Index"))

@@ -12,7 +12,7 @@
     using EasyPTC.Data.Contracts;
     using System.ComponentModel.DataAnnotations;
 
-    public class GenericRepository<T> : IRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T> where T : class, IEntity
     {
         public GenericRepository(IEasyPtcDbContext context)
         {

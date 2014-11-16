@@ -3,7 +3,7 @@
     using EasyPTC.Data.Contracts;
     using System.ComponentModel.DataAnnotations;
 
-    public class Category : DeletableEntity
+    public class Category : DeletableEntity, IEntity
     {
         [Key]
         public int Id { get; set; }

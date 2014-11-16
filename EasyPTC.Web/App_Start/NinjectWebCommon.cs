@@ -13,10 +13,21 @@ namespace EasyPTC.Web.App_Start
 
     using EasyPTC.Web.Infrastructure;
     using EasyPTC.Data;
+    using EasyPTC.Data.Contracts;
+    using EasyPTC.Data.Repositories.Base;
+    using EasyPTC.Web.Infrastructure.ModelBinders;
 
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+        private static IKernel kernel;
+        public static IKernel Kernel
+        {
+            get
+            {
+                return kernel;
+            }
+        }
 
         /// <summary>
         /// Starts the application
@@ -42,7 +53,7 @@ namespace EasyPTC.Web.App_Start
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            var kernel = new StandardKernel();
+            kernel = new StandardKernel();
             try
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
@@ -66,6 +77,8 @@ namespace EasyPTC.Web.App_Start
         {
             kernel.Bind<IEasyPtcDbContext>().To<EasyPtcDbContext>();
             kernel.Bind<IEasyPtcData>().To<EasyPtcData>();
+            kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
+            kernel.Bind(typeof(EntityModelBinder<>)).ToSelf();
         }        
     }
 }

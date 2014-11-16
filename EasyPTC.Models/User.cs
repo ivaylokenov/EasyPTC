@@ -1,11 +1,12 @@
 ﻿namespace EasyPTC.Models
 {
+    using EasyPTC.Data.Contracts;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
-    public class User : IdentityUser
+    public class User : IdentityUser, IEntity
     {
         public string FirstName { get; set; }
 

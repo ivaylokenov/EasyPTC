@@ -77,7 +77,7 @@ namespace EasyPTC.Data
             }
         }
 
-        private IRepository<T> GetRepository<T>() where T : class
+        private IRepository<T> GetRepository<T>() where T : class, IEntity
         {
             if (!this.repositories.ContainsKey(typeof(T)))
             {
@@ -88,7 +88,7 @@ namespace EasyPTC.Data
             return (IRepository<T>)this.repositories[typeof(T)];
         }
 
-        private IDeletableEntityRepository<T> GetDeletableEntityRepository<T>() where T : class, IDeletableEntity
+        private IDeletableEntityRepository<T> GetDeletableEntityRepository<T>() where T : class, IDeletableEntity, IEntity
         {
             if (!this.repositories.ContainsKey(typeof(T)))
             {

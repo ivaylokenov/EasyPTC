@@ -26,6 +26,7 @@ namespace EasyPTC.Web.Controllers
         public ActionResult About()
         {
             return View();
+            //return RedirectToAction<HomeController>(h => h.Index());
         }
     }
 }
